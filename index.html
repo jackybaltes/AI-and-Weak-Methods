@@ -1,0 +1,1758 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>AI and Weak Methods</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/ntnuerc.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+        <script src="https://daybrush.com/scenejs/release/latest/dist/scene.min.js"></script>
+		
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+        <script src="js/ntnu.js"></script>
+    </head>
+    <body>
+        <div class="reveal">
+        <div class="slides">
+            
+<section id="first" data-state="first">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<h1> AI and Weak Methods</h1>
+
+   <div class="author" style="text-align:center;">
+    
+<p>
+      Jacky Baltes<br>
+      National Taiwan Normal University<br>
+      Taipei, Taiwan<br>
+      <a href="mailto:jacky.baltes@ntnu.edu.tw">jacky.baltes@ntnu.edu.tw</a><br>
+</p>
+
+   </div>
+   <div class="date">
+    17 December 2023
+   </div>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-52838b4a-a03b-4cda-bf8e-26579bf9b608" ><span id="id-52838b4a-a03b-4cda-bf8e-26579bf9b608"><img id="img-id-52838b4a-a03b-4cda-bf8e-26579bf9b608"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-135ec548-44ea-4bdf-bcaf-056bac012117" ><span id="id-135ec548-44ea-4bdf-bcaf-056bac012117"><img id="img-id-135ec548-44ea-4bdf-bcaf-056bac012117" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00003_frag_00001" data-state="slide_00003_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<h1>Top of Wolf and Chicks Search Space</h1>
+
+<span id="id-3959c2c9-17f5-4e76-9670-05460006121e" ><span id="id-3959c2c9-17f5-4e76-9670-05460006121e"><img id="img-id-3959c2c9-17f5-4e76-9670-05460006121e"     src="assets/images/g3.svg"/></span>
+</span>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-c9684d51-7d47-4456-977b-a6c70ceaee3b" ><span id="id-c9684d51-7d47-4456-977b-a6c70ceaee3b"><img id="img-id-c9684d51-7d47-4456-977b-a6c70ceaee3b"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-124dcd41-e93b-4715-8ad0-23c780f49baa" ><span id="id-124dcd41-e93b-4715-8ad0-23c780f49baa"><img id="img-id-124dcd41-e93b-4715-8ad0-23c780f49baa" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00004_frag_00001" data-state="slide_00004_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<h1>Problem Space</h1>
+
+<div class="jb-text">
+<p>A <b>problem space</b> is the collection of all legal problem states into a tree or graph.</p>
+<p>Connections between the nodes (problem states) is through the application of operators</p>
+<p>Operators may be <b>reversible</b> which means that you can undo them and get back to the original state. 
+But not all operators are reversible. E.g. break a cup</p>
+
+</div>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-29568ee7-3c34-4787-9414-5f3edea83afb" ><span id="id-29568ee7-3c34-4787-9414-5f3edea83afb"><img id="img-id-29568ee7-3c34-4787-9414-5f3edea83afb"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-11708a6a-90c7-4beb-a0c1-6935a31847c0" ><span id="id-11708a6a-90c7-4beb-a0c1-6935a31847c0"><img id="img-id-11708a6a-90c7-4beb-a0c1-6935a31847c0" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00005_frag_00001" data-state="slide_00005_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<h1>Problem Space</h1>
+
+<div class="jb-text">
+<p>Problem space is not represented <b>explicitly</b>, since it is huge. Generated <b>implicitly</b>
+through the problem states, the actions (links between problem states) and the rules of the problem.</p>
+
+</div>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-da32af85-f2b7-45a5-a04e-431691065d66" ><span id="id-da32af85-f2b7-45a5-a04e-431691065d66"><img id="img-id-da32af85-f2b7-45a5-a04e-431691065d66"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-45b5ae51-d18d-4971-8e45-8ca58781fd5b" ><span id="id-45b5ae51-d18d-4971-8e45-8ca58781fd5b"><img id="img-id-45b5ae51-d18d-4971-8e45-8ca58781fd5b" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00006_frag_00001" data-state="slide_00006_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+<div class="document" id="state-space-problem-solving">
+<h1 class="title">State Space Problem Solving</h1>
+<div class="jb-text docutils container">
+<p><strong>State Space Problem Solving</strong> search problem space for a solution</p>
+<p>State is a <strong>complete</strong> description of the problem/world that is relevant to
+solving the problem</p>
+</div>
+</div>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-6c95919a-0cd1-4988-bf61-0576a6885dd3" ><span id="id-6c95919a-0cd1-4988-bf61-0576a6885dd3"><img id="img-id-6c95919a-0cd1-4988-bf61-0576a6885dd3"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-a9d60a49-b287-479d-96b0-e5b0834584d2" ><span id="id-a9d60a49-b287-479d-96b0-e5b0834584d2"><img id="img-id-a9d60a49-b287-479d-96b0-e5b0834584d2" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00007_frag_00001" data-state="slide_00007_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+<div class="document" id="depth-first-search-algorithm">
+<h1 class="title">Depth First Search Algorithm</h1>
+<div class="jb-text docutils container">
+<p>When considering a node n1</p>
+<ul class="simple">
+<li>expand all children of node n1</li>
+<li>select one of the children c_next</li>
+<li>loop back to expand c_next</li>
+</ul>
+<p>Proceed downwards as quickly as possible</p>
+</div>
+</div>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-016decfb-876d-47a1-a5a9-4c747933bd45" ><span id="id-016decfb-876d-47a1-a5a9-4c747933bd45"><img id="img-id-016decfb-876d-47a1-a5a9-4c747933bd45"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-59a86e52-0c7c-416e-b5b5-d0b418b82053" ><span id="id-59a86e52-0c7c-416e-b5b5-d0b418b82053"><img id="img-id-59a86e52-0c7c-416e-b5b5-d0b418b82053" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00008_frag_00001" data-state="slide_00008_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-99ef0081-8792-4284-8155-c61565164342" ><span id="id-99ef0081-8792-4284-8155-c61565164342"><img id="img-id-99ef0081-8792-4284-8155-c61565164342"     src="assets/images/g41.svg"/></span>
+</span>
+
+</td>
+<td>
+Expand node N1 and collect children 
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-cee0f3d1-bcae-4cad-94e0-75ff51b14e80" ><span id="id-cee0f3d1-bcae-4cad-94e0-75ff51b14e80"><img id="img-id-cee0f3d1-bcae-4cad-94e0-75ff51b14e80"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-6ce724f0-2f5f-45c4-80f5-02c033b0e77e" ><span id="id-6ce724f0-2f5f-45c4-80f5-02c033b0e77e"><img id="img-id-6ce724f0-2f5f-45c4-80f5-02c033b0e77e" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00009_frag_00001" data-state="slide_00009_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-b3b38eae-f41f-4b4b-b8a8-0188a53b7980" ><span id="id-b3b38eae-f41f-4b4b-b8a8-0188a53b7980"><img id="img-id-b3b38eae-f41f-4b4b-b8a8-0188a53b7980"     src="assets/images/g42.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2 and collect children </p>
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-a10634ac-c91f-468e-a12d-7f276348051f" ><span id="id-a10634ac-c91f-468e-a12d-7f276348051f"><img id="img-id-a10634ac-c91f-468e-a12d-7f276348051f"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-6da13376-c9bc-4c2b-b95a-dd38f86027af" ><span id="id-6da13376-c9bc-4c2b-b95a-dd38f86027af"><img id="img-id-6da13376-c9bc-4c2b-b95a-dd38f86027af" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00010_frag_00001" data-state="slide_00010_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-95a9d67d-51d4-4ec9-a0bd-60cd7010f068" ><span id="id-95a9d67d-51d4-4ec9-a0bd-60cd7010f068"><img id="img-id-95a9d67d-51d4-4ec9-a0bd-60cd7010f068"     src="assets/images/g42.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2 and collect children </p>
+<p>Epxand node N7 - no children. Backtrack to N2 (no children), backtrack to N1</p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-2b41e428-702d-48c5-8823-964ffc7157b8" ><span id="id-2b41e428-702d-48c5-8823-964ffc7157b8"><img id="img-id-2b41e428-702d-48c5-8823-964ffc7157b8"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-f821673e-2c7a-4ff8-bda8-54beb29cb007" ><span id="id-f821673e-2c7a-4ff8-bda8-54beb29cb007"><img id="img-id-f821673e-2c7a-4ff8-bda8-54beb29cb007" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00011_frag_00001" data-state="slide_00011_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-3c40cb24-e02a-4db3-a8a9-331b8d91fecc" ><span id="id-3c40cb24-e02a-4db3-a8a9-331b8d91fecc"><img id="img-id-3c40cb24-e02a-4db3-a8a9-331b8d91fecc"     src="assets/images/g44.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2 and collect children </p>
+<p>Epxand node N7 - no children. Backtrack to N2 (no children), backtrack to N1</p>
+<p>Expand node N3 - no children. Backtrack to root and expand N4</p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-1fd30e56-0dce-4cc8-84a6-115e430365f5" ><span id="id-1fd30e56-0dce-4cc8-84a6-115e430365f5"><img id="img-id-1fd30e56-0dce-4cc8-84a6-115e430365f5"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-957d2d08-48a9-44c5-a09b-caf016f58195" ><span id="id-957d2d08-48a9-44c5-a09b-caf016f58195"><img id="img-id-957d2d08-48a9-44c5-a09b-caf016f58195" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00012_frag_00001" data-state="slide_00012_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-01bb56df-1baa-4f0d-bac6-ba41e4a44540" ><span id="id-01bb56df-1baa-4f0d-bac6-ba41e4a44540"><img id="img-id-01bb56df-1baa-4f0d-bac6-ba41e4a44540"     src="assets/images/g45.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2 and collect children </p>
+<p>Epxand node N7 - no children. Backtrack to N2 (no children), backtrack to N1</p>
+<p>Expand node N3 - no children. Backtrack to root and expand N4. Expand children</p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-9179e7fd-2ba1-4929-88cf-97edbfb75d50" ><span id="id-9179e7fd-2ba1-4929-88cf-97edbfb75d50"><img id="img-id-9179e7fd-2ba1-4929-88cf-97edbfb75d50"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-342012f5-9067-4f93-922d-67197d275372" ><span id="id-342012f5-9067-4f93-922d-67197d275372"><img id="img-id-342012f5-9067-4f93-922d-67197d275372" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00013_frag_00001" data-state="slide_00013_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-817f1a4b-d219-4567-90a8-5a6c9342fe6a" ><span id="id-817f1a4b-d219-4567-90a8-5a6c9342fe6a"><img id="img-id-817f1a4b-d219-4567-90a8-5a6c9342fe6a"     src="assets/images/g46.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2 and collect children </p>
+<p>Epxand node N7. No children. Backtrack to N2 (no children), backtrack to N1</p>
+<p>Expand node N3. No children. Backtrack to root and expand N4. Expand children</p>
+<p>Expand node N8. No children. Backtrack to N4. Expand N9.
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-6d08254c-1f50-4403-ac43-5992dc7266c8" ><span id="id-6d08254c-1f50-4403-ac43-5992dc7266c8"><img id="img-id-6d08254c-1f50-4403-ac43-5992dc7266c8"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-fe061114-c474-4962-ade1-9cf73eb2d4d8" ><span id="id-fe061114-c474-4962-ade1-9cf73eb2d4d8"><img id="img-id-fe061114-c474-4962-ade1-9cf73eb2d4d8" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00014_frag_00001" data-state="slide_00014_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-676a7d30-6f0b-49c3-ba95-1c15e8e82a08" ><span id="id-676a7d30-6f0b-49c3-ba95-1c15e8e82a08"><img id="img-id-676a7d30-6f0b-49c3-ba95-1c15e8e82a08"     src="assets/images/g49.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2 and collect children </p>
+<p>Epxand node N7. No children. Backtrack to N2 (no children), backtrack to N1</p>
+<p>Expand node N3. No children. Backtrack to root and expand N4. Expand children</p>
+<p>Expand node N8. No children. Backtrack to N4. Expand N9. Goto left-most child N12</p>
+<p>Expand node N12: found solution. Done</p>
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-3042e390-7a3a-475f-9488-8370a323d1b6" ><span id="id-3042e390-7a3a-475f-9488-8370a323d1b6"><img id="img-id-3042e390-7a3a-475f-9488-8370a323d1b6"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-1060e760-4290-43b0-b481-768bee40de94" ><span id="id-1060e760-4290-43b0-b481-768bee40de94"><img id="img-id-1060e760-4290-43b0-b481-768bee40de94" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00015_frag_00001" data-state="slide_00015_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<h1>Breadth First Search</h1>
+
+<div class="jb-text">
+<p>Expand a search tree level by level</p>
+<p>Instead of moving to a child, we expand all the children first</p>
+<p>After all children at level n are expanded, we move to the next level</p>
+</div>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-049cc98a-021f-4e7e-9556-09ab9e68f67a" ><span id="id-049cc98a-021f-4e7e-9556-09ab9e68f67a"><img id="img-id-049cc98a-021f-4e7e-9556-09ab9e68f67a"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-6af5d9b4-4dc0-420a-b216-f2d124775f7f" ><span id="id-6af5d9b4-4dc0-420a-b216-f2d124775f7f"><img id="img-id-6af5d9b4-4dc0-420a-b216-f2d124775f7f" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00016_frag_00001" data-state="slide_00016_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-eaadf4fd-2586-4e4a-b820-60914b9f252d" ><span id="id-eaadf4fd-2586-4e4a-b820-60914b9f252d"><img id="img-id-eaadf4fd-2586-4e4a-b820-60914b9f252d"     src="assets/images/g51.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-e38dd96f-6187-4e81-88e9-735f9872c8fe" ><span id="id-e38dd96f-6187-4e81-88e9-735f9872c8fe"><img id="img-id-e38dd96f-6187-4e81-88e9-735f9872c8fe"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-08ef8051-f7ea-43e8-80a8-c53aaee7374b" ><span id="id-08ef8051-f7ea-43e8-80a8-c53aaee7374b"><img id="img-id-08ef8051-f7ea-43e8-80a8-c53aaee7374b" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00017_frag_00001" data-state="slide_00017_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-f4a7a94b-443d-4d62-83a2-ea8594a88d31" ><span id="id-f4a7a94b-443d-4d62-83a2-ea8594a88d31"><img id="img-id-f4a7a94b-443d-4d62-83a2-ea8594a88d31"     src="assets/images/g52.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2. Yields N7</p>
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-58977ff7-0d71-499b-8835-9a56d52650c9" ><span id="id-58977ff7-0d71-499b-8835-9a56d52650c9"><img id="img-id-58977ff7-0d71-499b-8835-9a56d52650c9"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-b8494fcb-f599-404b-86bb-513baca3dbd9" ><span id="id-b8494fcb-f599-404b-86bb-513baca3dbd9"><img id="img-id-b8494fcb-f599-404b-86bb-513baca3dbd9" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00018_frag_00001" data-state="slide_00018_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-bfa8f454-57d2-4aad-9c53-182b22d7e0b7" ><span id="id-bfa8f454-57d2-4aad-9c53-182b22d7e0b7"><img id="img-id-bfa8f454-57d2-4aad-9c53-182b22d7e0b7"     src="assets/images/g54.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2. Yields N7</p>
+<p>Expand node N3. No children</p>
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-83b21abf-d5aa-4f84-9393-816e22a8cec7" ><span id="id-83b21abf-d5aa-4f84-9393-816e22a8cec7"><img id="img-id-83b21abf-d5aa-4f84-9393-816e22a8cec7"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-d6a2a445-207f-4b9b-bdf2-a9f915c67225" ><span id="id-d6a2a445-207f-4b9b-bdf2-a9f915c67225"><img id="img-id-d6a2a445-207f-4b9b-bdf2-a9f915c67225" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00019_frag_00001" data-state="slide_00019_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-26f115ac-65be-4c2f-949d-e2b2fb39c4b4" ><span id="id-26f115ac-65be-4c2f-949d-e2b2fb39c4b4"><img id="img-id-26f115ac-65be-4c2f-949d-e2b2fb39c4b4"     src="assets/images/g55.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2. Yields N7</p>
+<p>Expand node N3. No children</p>
+<p>Expand node N4. Yields N8 and N9</p>
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-afd26177-23bb-4e70-b527-e2bb6f150002" ><span id="id-afd26177-23bb-4e70-b527-e2bb6f150002"><img id="img-id-afd26177-23bb-4e70-b527-e2bb6f150002"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-04916920-88b9-44f1-b8ae-4ad047845a6b" ><span id="id-04916920-88b9-44f1-b8ae-4ad047845a6b"><img id="img-id-04916920-88b9-44f1-b8ae-4ad047845a6b" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00020_frag_00001" data-state="slide_00020_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-a24da786-b98f-4537-9782-7b0bb3990eb3" ><span id="id-a24da786-b98f-4537-9782-7b0bb3990eb3"><img id="img-id-a24da786-b98f-4537-9782-7b0bb3990eb3"     src="assets/images/g56.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2. Yields N7</p>
+<p>Expand node N3. No children</p>
+<p>Expand node N4. Yields N8 and N9</p>
+<p>Expand node N5. Yields N10 and N11</p>
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-a502e3fc-19aa-46af-a17d-68f6f63f2e51" ><span id="id-a502e3fc-19aa-46af-a17d-68f6f63f2e51"><img id="img-id-a502e3fc-19aa-46af-a17d-68f6f63f2e51"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-f51394cf-cd25-4f96-ae74-27863d15cd24" ><span id="id-f51394cf-cd25-4f96-ae74-27863d15cd24"><img id="img-id-f51394cf-cd25-4f96-ae74-27863d15cd24" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00021_frag_00001" data-state="slide_00021_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-7484e927-698e-41c2-a0d0-7236205758b2" ><span id="id-7484e927-698e-41c2-a0d0-7236205758b2"><img id="img-id-7484e927-698e-41c2-a0d0-7236205758b2"     src="assets/images/g57.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2. Yields N7</p>
+<p>Expand node N3. No children</p>
+<p>Expand node N4. Yields N8 and N9</p>
+<p>Expand node N5. Yields N10 and N11</p>
+<p>Close N5. Move to N6</p>
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-d4e27953-d633-4e04-a117-90e5a0f4124d" ><span id="id-d4e27953-d633-4e04-a117-90e5a0f4124d"><img id="img-id-d4e27953-d633-4e04-a117-90e5a0f4124d"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-6e561b6e-aa30-4ff5-9a1b-82cf2e28eafa" ><span id="id-6e561b6e-aa30-4ff5-9a1b-82cf2e28eafa"><img id="img-id-6e561b6e-aa30-4ff5-9a1b-82cf2e28eafa" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00022_frag_00001" data-state="slide_00022_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-c0919fb5-1bd4-4f97-a929-2efbb70d36e3" ><span id="id-c0919fb5-1bd4-4f97-a929-2efbb70d36e3"><img id="img-id-c0919fb5-1bd4-4f97-a929-2efbb70d36e3"     src="assets/images/g58.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2. Yields N7</p>
+<p>Expand node N3. No children</p>
+<p>Expand node N4. Yields N8 and N9</p>
+<p>Expand node N5. Yields N10 and N11</p>
+<p>Close N5. Move to N6</p>
+<p>After expanding N7 - N11.<p> 
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-0de45dc1-64df-4a68-9220-6a453a716efa" ><span id="id-0de45dc1-64df-4a68-9220-6a453a716efa"><img id="img-id-0de45dc1-64df-4a68-9220-6a453a716efa"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-90a8d161-84b0-4467-8eeb-837b51f10b59" ><span id="id-90a8d161-84b0-4467-8eeb-837b51f10b59"><img id="img-id-90a8d161-84b0-4467-8eeb-837b51f10b59" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00023_frag_00001" data-state="slide_00023_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table style="width:100%">
+<tr>
+<td style="width:50%">
+<span id="id-0f7e8453-5d66-40e0-ab7f-e3c65cd18b3a" ><span id="id-0f7e8453-5d66-40e0-ab7f-e3c65cd18b3a"><img id="img-id-0f7e8453-5d66-40e0-ab7f-e3c65cd18b3a"     src="assets/images/g59.svg"/></span>
+</span>
+
+</td>
+<td>
+<p>Expand node N1 and collect children </p>
+<p>Expand node N2. Yields N7</p>
+<p>Expand node N3. No children</p>
+<p>Expand node N4. Yields N8 and N9</p>
+<p>Expand node N5. Yields N10 and N11</p>
+<p>Close N5. Move to N6</p>
+<p>After expanding N7 - N11.<p> 
+<p>Expand node N12. Found solution</p>
+<p>
+
+</td>
+</tr>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-d1c374d3-9eea-40b2-a233-c18692ea0c0c" ><span id="id-d1c374d3-9eea-40b2-a233-c18692ea0c0c"><img id="img-id-d1c374d3-9eea-40b2-a233-c18692ea0c0c"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-1fd03a25-4f68-47d4-80e7-bd0c3c5f9cf1" ><span id="id-1fd03a25-4f68-47d4-80e7-bd0c3c5f9cf1"><img id="img-id-1fd03a25-4f68-47d4-80e7-bd0c3c5f9cf1" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00024_frag_00001" data-state="slide_00024_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+<div style="font-size:0.5em"><!-- start of style="font-size:0.5em" -->
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+<h1>Comparison of Depth First Search (DFS) and Breadth First Search (BFS)</h1>
+
+<table>
+<tr>
+<th></th>
+<th>Depth First Search</th>
+<th>Breadth First Search</th>
+</tr>
+<tr>
+<td>Pro:</td>
+<td>Requires only a linear amount of memory</td>
+<td>Find optimal solution</td>
+</tr>
+<tr>
+<td>Con:</td>
+<td>
+<p>May be sidetracked down a deep subtree</p>
+<p>Need to backtrack</p>
+<p>Need to check for loops</p>
+</td>
+<td>Requires an exponential amount of memory (all nodes at a level)</td>
+</tr>
+<tbody>
+</tbody>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of style="font-size:0.5em" -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-283b54a5-9212-4324-be04-839456e4778c" ><span id="id-283b54a5-9212-4324-be04-839456e4778c"><img id="img-id-283b54a5-9212-4324-be04-839456e4778c"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-902a856e-339c-4942-8c78-c82ec5c4918d" ><span id="id-902a856e-339c-4942-8c78-c82ec5c4918d"><img id="img-id-902a856e-339c-4942-8c78-c82ec5c4918d" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00025_frag_00001" data-state="slide_00025_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+<h1>Guidance for Selecting a Search Algorithm</h1>
+
+<div class="jb-text">
+<p>If the tree is uniform (all the solutions are at the leaf nodes, and all leaf nodes are 
+at the same level), then DFS is a good choice.</p>
+<p>Examples of problems with a uniform search space would be N-Queens or Sudoku. In N-Queens: must place exactly 8 queens.
+You must place exactly n missing numbers.</p>
+<p>Compare that to the Wolfs and Chicks problem - we don't know how many times we must cross
+the river with the raft</p>
+
+</div>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-4abc713a-59ee-4fbe-b752-275489866216" ><span id="id-4abc713a-59ee-4fbe-b752-275489866216"><img id="img-id-4abc713a-59ee-4fbe-b752-275489866216"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-ed28a3e1-961f-4611-a417-f0408704de5e" ><span id="id-ed28a3e1-961f-4611-a417-f0408704de5e"><img id="img-id-ed28a3e1-961f-4611-a417-f0408704de5e" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00026_frag_00001" data-state="slide_00026_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nodes</th>
+      <th>Times</th>
+      <th>Memory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>2.25e+02</td>
+      <td>2.25e-03</td>
+      <td>2.25e+04</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.06e+04</td>
+      <td>5.06e-01</td>
+      <td>5.06e+06</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.14e+07</td>
+      <td>1.14e+02</td>
+      <td>1.14e+09</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2.56e+09</td>
+      <td>2.56e+04</td>
+      <td>2.56e+11</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>5.77e+11</td>
+      <td>5.77e+06</td>
+      <td>5.77e+13</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1.30e+14</td>
+      <td>1.30e+09</td>
+      <td>1.30e+16</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2.92e+16</td>
+      <td>2.92e+11</td>
+      <td>2.92e+18</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>6.57e+18</td>
+      <td>6.57e+13</td>
+      <td>6.57e+20</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1.48e+21</td>
+      <td>1.48e+16</td>
+      <td>1.48e+23</td>
+    </tr>
+  </tbody>
+</table>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-f17a5378-3c7c-40fd-9b9c-841568965300" ><span id="id-f17a5378-3c7c-40fd-9b9c-841568965300"><img id="img-id-f17a5378-3c7c-40fd-9b9c-841568965300"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-9486c074-c9ca-449d-b18b-26a56451d227" ><span id="id-9486c074-c9ca-449d-b18b-26a56451d227"><img id="img-id-9486c074-c9ca-449d-b18b-26a56451d227" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+<section id="slide_00027_frag_00001" data-state="slide_00027_frag_00001">
+
+
+<!-- Header -->
+  
+
+<!-- Background -->
+
+
+<!-- Slide -->
+<div class="jb-slide">
+
+<div class="jb-output-code jb-render">
+
+<!-- start embedded style -->
+
+<!-- end embedded style -->
+<div class="jb-output jb-render">
+
+<h1>BFS Memory and Runtime</h1>
+
+<div class="jb-text">
+<p>Assume that we search a space with a branching factor of {b} and a processing speed of
+{s} nodes per second</p>
+<p>Can run an AI algorithm for a long time (e.g., Crew schedule for Air NZ run for 3 weeks on
+                                            the HPC at the University of Auckland)</p>
+<p>But running BFS, we would run out of all storage in the universe very quickly</p>
+
+</div>
+
+</div><!-- end of jb-output jb-render -->
+</div><!-- end of jb-output-code jb-render -->
+
+
+</div>
+<!-- Footer -->
+
+<div class="jb-footer-left plain">
+    <span id="id-ed937130-2967-43ba-ab3c-26974dc09c3a" ><span id="id-ed937130-2967-43ba-ab3c-26974dc09c3a"><img id="img-id-ed937130-2967-43ba-ab3c-26974dc09c3a"     src="assets/images/logo.png"/></span>
+</span>
+
+</div>
+<div class="jb-footer-right plain">
+    <span id="id-800127d5-210e-4744-a058-4a16083eefbd" ><span id="id-800127d5-210e-4744-a058-4a16083eefbd"><img id="img-id-800127d5-210e-4744-a058-4a16083eefbd" width="162" height="138"   src="assets/images/robbi.png"/></span>
+</span>
+
+</div>
+
+<aside class="notes">
+
+</aside>
+
+
+
+</section>
+        </div>
+        </div>
+
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                math: {
+                    mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                    config: 'TeX-AMS_HTML-full',  // See http://docs.mathjax.org/en/latest/config-files.html
+                    // tex2jax: {
+                    //     inlineMath: [['$', '$'], ['\(', '\)']],
+                    //     displayMath: [['$$', '$$'], ['\[', '\]']],
+                    //     processEscapes: true,
+                    //     processEnvironments: true,
+                    //     skipTags: ['script', 'noscript', 'style', 'textarea', 'code', 'pre'],
+                    //     displayAlign: 'center',
+                    // }                
+                },
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/math/math.js', async: true }
+                ]
+            });
+        </script>
+
+        <script>
+            <!-- Assets -->
+var assets = {
+"robbi" : new JBImage( "robbi", "12677", "162", "138", null, null, "assets/images/robbi", "png" ),
+"logo" : new JBImage( "logo", "12033", "0", "0", null, null, "assets/images/logo", "png" ),
+"fira-logo-1" : new JBImage( "fira-logo-1", "93836", "0", "0", null, null, "assets/images/FIRA-logo-1", "png" ),
+"pairLogo" : new JBImage( "pairLogo", "63051", "0", "0", null, null, "assets/images/pairLogo", "png" ),
+"g3" : new JBImage( "g3", "12230", "0", "0", null, null, "assets/images/g3", "svg" ),
+"g41" : new JBImage( "g41", "12207", "0", "0", null, null, "assets/images/g41", "svg" ),
+"g42" : new JBImage( "g42", "12210", "0", "0", null, null, "assets/images/g42", "svg" ),
+"g43" : new JBImage( "g43", "12210", "0", "0", null, null, "assets/images/g43", "svg" ),
+"g44" : new JBImage( "g44", "12210", "0", "0", null, null, "assets/images/g44", "svg" ),
+"g45" : new JBImage( "g45", "12216", "0", "0", null, null, "assets/images/g45", "svg" ),
+"g46" : new JBImage( "g46", "12216", "0", "0", null, null, "assets/images/g46", "svg" ),
+"g49" : new JBImage( "g49", "12228", "0", "0", null, null, "assets/images/g49", "svg" ),
+"g51" : new JBImage( "g51", "12207", "0", "0", null, null, "assets/images/g51", "svg" ),
+"g52" : new JBImage( "g52", "12210", "0", "0", null, null, "assets/images/g52", "svg" ),
+"g54" : new JBImage( "g54", "12210", "0", "0", null, null, "assets/images/g54", "svg" ),
+"g55" : new JBImage( "g55", "12216", "0", "0", null, null, "assets/images/g55", "svg" ),
+"g56" : new JBImage( "g56", "12222", "0", "0", null, null, "assets/images/g56", "svg" ),
+"g57" : new JBImage( "g57", "12222", "0", "0", null, null, "assets/images/g57", "svg" ),
+"g58" : new JBImage( "g58", "12246", "0", "0", null, null, "assets/images/g58", "svg" ),
+"g59" : new JBImage( "g59", "12246", "0", "0", null, null, "assets/images/g59", "svg" ) 
+};
+var assetInstances = {
+    "id-135ec548-44ea-4bdf-bcaf-056bac012117": assets["robbi"],
+    "id-124dcd41-e93b-4715-8ad0-23c780f49baa": assets["robbi"],
+    "id-11708a6a-90c7-4beb-a0c1-6935a31847c0": assets["robbi"],
+    "id-45b5ae51-d18d-4971-8e45-8ca58781fd5b": assets["robbi"],
+    "id-a9d60a49-b287-479d-96b0-e5b0834584d2": assets["robbi"],
+    "id-59a86e52-0c7c-416e-b5b5-d0b418b82053": assets["robbi"],
+    "id-6ce724f0-2f5f-45c4-80f5-02c033b0e77e": assets["robbi"],
+    "id-6da13376-c9bc-4c2b-b95a-dd38f86027af": assets["robbi"],
+    "id-f821673e-2c7a-4ff8-bda8-54beb29cb007": assets["robbi"],
+    "id-957d2d08-48a9-44c5-a09b-caf016f58195": assets["robbi"],
+    "id-342012f5-9067-4f93-922d-67197d275372": assets["robbi"],
+    "id-fe061114-c474-4962-ade1-9cf73eb2d4d8": assets["robbi"],
+    "id-1060e760-4290-43b0-b481-768bee40de94": assets["robbi"],
+    "id-6af5d9b4-4dc0-420a-b216-f2d124775f7f": assets["robbi"],
+    "id-08ef8051-f7ea-43e8-80a8-c53aaee7374b": assets["robbi"],
+    "id-b8494fcb-f599-404b-86bb-513baca3dbd9": assets["robbi"],
+    "id-d6a2a445-207f-4b9b-bdf2-a9f915c67225": assets["robbi"],
+    "id-04916920-88b9-44f1-b8ae-4ad047845a6b": assets["robbi"],
+    "id-f51394cf-cd25-4f96-ae74-27863d15cd24": assets["robbi"],
+    "id-6e561b6e-aa30-4ff5-9a1b-82cf2e28eafa": assets["robbi"],
+    "id-90a8d161-84b0-4467-8eeb-837b51f10b59": assets["robbi"],
+    "id-1fd03a25-4f68-47d4-80e7-bd0c3c5f9cf1": assets["robbi"],
+    "id-902a856e-339c-4942-8c78-c82ec5c4918d": assets["robbi"],
+    "id-ed28a3e1-961f-4611-a417-f0408704de5e": assets["robbi"],
+    "id-9486c074-c9ca-449d-b18b-26a56451d227": assets["robbi"],
+    "id-800127d5-210e-4744-a058-4a16083eefbd": assets["robbi"],
+    "id-52838b4a-a03b-4cda-bf8e-26579bf9b608": assets["logo"],
+    "id-c9684d51-7d47-4456-977b-a6c70ceaee3b": assets["logo"],
+    "id-29568ee7-3c34-4787-9414-5f3edea83afb": assets["logo"],
+    "id-da32af85-f2b7-45a5-a04e-431691065d66": assets["logo"],
+    "id-6c95919a-0cd1-4988-bf61-0576a6885dd3": assets["logo"],
+    "id-016decfb-876d-47a1-a5a9-4c747933bd45": assets["logo"],
+    "id-cee0f3d1-bcae-4cad-94e0-75ff51b14e80": assets["logo"],
+    "id-a10634ac-c91f-468e-a12d-7f276348051f": assets["logo"],
+    "id-2b41e428-702d-48c5-8823-964ffc7157b8": assets["logo"],
+    "id-1fd30e56-0dce-4cc8-84a6-115e430365f5": assets["logo"],
+    "id-9179e7fd-2ba1-4929-88cf-97edbfb75d50": assets["logo"],
+    "id-6d08254c-1f50-4403-ac43-5992dc7266c8": assets["logo"],
+    "id-3042e390-7a3a-475f-9488-8370a323d1b6": assets["logo"],
+    "id-049cc98a-021f-4e7e-9556-09ab9e68f67a": assets["logo"],
+    "id-e38dd96f-6187-4e81-88e9-735f9872c8fe": assets["logo"],
+    "id-58977ff7-0d71-499b-8835-9a56d52650c9": assets["logo"],
+    "id-83b21abf-d5aa-4f84-9393-816e22a8cec7": assets["logo"],
+    "id-afd26177-23bb-4e70-b527-e2bb6f150002": assets["logo"],
+    "id-a502e3fc-19aa-46af-a17d-68f6f63f2e51": assets["logo"],
+    "id-d4e27953-d633-4e04-a117-90e5a0f4124d": assets["logo"],
+    "id-0de45dc1-64df-4a68-9220-6a453a716efa": assets["logo"],
+    "id-d1c374d3-9eea-40b2-a233-c18692ea0c0c": assets["logo"],
+    "id-283b54a5-9212-4324-be04-839456e4778c": assets["logo"],
+    "id-4abc713a-59ee-4fbe-b752-275489866216": assets["logo"],
+    "id-f17a5378-3c7c-40fd-9b9c-841568965300": assets["logo"],
+    "id-ed937130-2967-43ba-ab3c-26974dc09c3a": assets["logo"],
+    "id-3959c2c9-17f5-4e76-9670-05460006121e": assets["g3"],
+    "id-99ef0081-8792-4284-8155-c61565164342": assets["g41"],
+    "id-b3b38eae-f41f-4b4b-b8a8-0188a53b7980": assets["g42"],
+    "id-95a9d67d-51d4-4ec9-a0bd-60cd7010f068": assets["g42"],
+    "id-3c40cb24-e02a-4db3-a8a9-331b8d91fecc": assets["g44"],
+    "id-01bb56df-1baa-4f0d-bac6-ba41e4a44540": assets["g45"],
+    "id-817f1a4b-d219-4567-90a8-5a6c9342fe6a": assets["g46"],
+    "id-676a7d30-6f0b-49c3-ba95-1c15e8e82a08": assets["g49"],
+    "id-eaadf4fd-2586-4e4a-b820-60914b9f252d": assets["g51"],
+    "id-f4a7a94b-443d-4d62-83a2-ea8594a88d31": assets["g52"],
+    "id-bfa8f454-57d2-4aad-9c53-182b22d7e0b7": assets["g54"],
+    "id-26f115ac-65be-4c2f-949d-e2b2fb39c4b4": assets["g55"],
+    "id-a24da786-b98f-4537-9782-7b0bb3990eb3": assets["g56"],
+    "id-7484e927-698e-41c2-a0d0-7236205758b2": assets["g57"],
+    "id-c0919fb5-1bd4-4f97-a929-2efbb70d36e3": assets["g58"],
+    "id-0f7e8453-5d66-40e0-ab7f-e3c65cd18b3a": assets["g59"]
+};
+<!-- End of Assets -->
+
+            convertURLs(assetInstances, "smart-path");
+        </script>
+        <script>
+            <!-- Characters -->
+var characters =
+{};
+<!-- End of Characters -->
+
+        </script>
+    </body>
+</html>
